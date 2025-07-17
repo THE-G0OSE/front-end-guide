@@ -1,10 +1,11 @@
+import { HomePage } from "@/pages";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const RouterProvider = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<div>test routing</div>}>
+        <Route path="/" element={<HomePage/>}>
         </Route>
       </Routes>
     </BrowserRouter>
