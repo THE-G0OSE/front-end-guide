@@ -4,16 +4,16 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()], // Добавил плагин tailwindcss
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src") // Всё ради красивых импортов
+      "@": path.resolve(__dirname, "./src")
     }
   },
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {     // Сразу разбил приложение на чанки
+        manualChunks: { 
           vendor: ['react', 'react-dom', 'react-router-dom'],
           motion: ['motion'],
           axios: ['axios'],

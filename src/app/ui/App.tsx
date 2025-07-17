@@ -1,9 +1,11 @@
+import { StoreProvider } from "../providers/store/ui/StoreProvider";
+
 const App = () => {
   return (
-    <div className='text-red-500'>
-        test2
-    </div>
-  )
-}
+    <StoreProvider>
+      <div className="">test2</div>
+    </StoreProvider>
+  );
+};
 
-export default App
+export default App;
