@@ -3,18 +3,17 @@ import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss()], // Добавил плагин tailwindcss
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src")
+      "@": path.resolve(__dirname, "./src") // Всё ради красивых импортов
     }
   },
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
+        manualChunks: {     // Сразу разбил приложение на чанки
           vendor: ['react', 'react-dom', 'react-router-dom'],
           motion: ['motion'],
           axios: ['axios'],
