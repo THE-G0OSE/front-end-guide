@@ -23,7 +23,8 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "paths": {
-      "@/*": ["./src/*"]  //Для красивых импортов
+      "@hooks": ["./src/shared/lib/hooks"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"]

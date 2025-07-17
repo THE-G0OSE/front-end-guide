@@ -1,10 +1,13 @@
-import RouterProvider from "../providers/router/ui/RouterProvider";
-import { StoreProvider } from "../providers/store/ui/StoreProvider";
+import { ThemeProvider } from "@/features/theme";
+import { RouterProvider } from "../providers/router";
+import { StoreProvider } from "../providers/store";
 
 const App = () => {
   return (
     <StoreProvider>
-       <RouterProvider/>
+      <ThemeProvider>
+        <RouterProvider />
+      </ThemeProvider>
     </StoreProvider>
   );
 };

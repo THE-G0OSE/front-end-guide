@@ -1,13 +1,14 @@
-import { configureStore/*, type ReducersMapObject*/ } from '@reduxjs/toolkit'
-// import { IStore } from './types'
+import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit'
+import { type IStore } from './types'
+import { themeReducer } from '@/features/theme'
 
-// const rootReducer: ReducersMaObject<IStore> = {
-
-// }
+const rootReducer: ReducersMapObject<IStore> = {
+    ThemeReducer: themeReducer
+}
 
 export const makeStore = () => {
     return configureStore({
-        reducer: {/*rootReducer*/},
+        reducer: rootReducer,
         middleware: (getDefaultMiddleware) => 
             getDefaultMiddleware()
     })

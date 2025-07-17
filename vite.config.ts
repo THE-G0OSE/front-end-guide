@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
+      "@hooks": path.resolve(__dirname, "./src/shared/lib/hooks"),
       "@": path.resolve(__dirname, "./src")
     }
   },
