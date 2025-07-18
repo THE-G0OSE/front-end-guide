@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { theme } from "./types";
-import type { IStore } from "@/app/providers/store/model/types";
+import type { IStore } from "@/app/providers/store";
 
 const initialState = {
   theme: localStorage.getItem("theme")

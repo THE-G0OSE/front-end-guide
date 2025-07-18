@@ -1,13 +1,13 @@
 import { useGLTF } from "@react-three/drei"
+import type { LocationType } from "./types"
 
-type ModelType = 'tavern'
-
-const models: Record<ModelType, string> = {
+const models: Record<LocationType, string> = {
+    "outside": "/нема такого",
     "tavern": '/tavern.glb'
 }
 
 interface IProps {
-    type: ModelType
+    type: LocationType
 }
 
 export const useModel = ({type}: IProps) => {

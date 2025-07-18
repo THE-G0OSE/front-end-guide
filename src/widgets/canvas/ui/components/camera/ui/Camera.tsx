@@ -1,10 +1,20 @@
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { useAppSelector } from "@hooks";
+import { PerspectiveCamera } from "@react-three/drei";
+import { CameraSelection } from "../model";
+import { locationsConfig } from "@/widgets/scenes";
+import { vectorSum } from "@utils";
 
 const Camera = () => {
+
+  const {currentPosition, currentLocation, currentRotation} = useAppSelector(CameraSelection)
+
+  const location = locationsConfig[currentLocation]
+
+  const position = vectorSum(vectorSum(location.position, location.cameraPosition), currentPosition)
+
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 110, 70]} rotation={[-Math.PI/3.3 ,0 , 0]} />
-      <OrbitControls/>
+      <PerspectiveCamera makeDefault position={position} rotation={currentRotation} />
     </>
   );
 };

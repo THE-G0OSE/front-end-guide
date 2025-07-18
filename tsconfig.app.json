@@ -24,6 +24,7 @@
     "noUncheckedSideEffectImports": true,
     "paths": {
       "@hooks": ["./src/shared/lib/hooks"],
+      "@utils": ["./src/shared/lib/utils"],
       "@/*": ["./src/*"]
     }
   },
