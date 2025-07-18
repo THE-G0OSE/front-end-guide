@@ -19,7 +19,9 @@ export default defineConfig({
           vendor: ['react', 'react-dom', 'react-router-dom'],
           motion: ['motion'],
           axios: ['axios'],
-          redux: ['react-redux']
+          redux: ['react-redux', '@reduxjs/toolkit'],
+          three: ['three'],
+          react_three: ['@react-three/fiber', '@react-three/drei']
         }
       }
     }
