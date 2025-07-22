@@ -1,6 +1,6 @@
-import { useAppSelector } from "@hooks";
+import { useAppDispatch, useAppSelector } from "@hooks";
 import { PerspectiveCamera } from "@react-three/drei";
-import { CameraSelection } from "../model";
+import { CameraSelection, setCurrentCursorBasedOffset } from "../model";
 import { locationsConfig } from "@/widgets/scenes";
 import { vectorSum } from "@utils";
 import { useEffect, useRef } from "react";
@@ -9,7 +9,7 @@ import { cameraMovementConfig } from "../model/cameraMovementConfig";
 import { Euler, QuadraticBezierCurve3, Quaternion, Vector3 } from "three";
 
 const Camera = () => {
-  const { currentPosition, currentLocation, currentRotation } =
+  const { currentPosition, currentLocation, currentRotation, currentCursorBasedOffset } =
     useAppSelector(CameraSelection);
   const location = locationsConfig[currentLocation];
   const position = useRef<[number, number, number]>([0, 0, 0]);
@@ -21,6 +21,7 @@ const Camera = () => {
   const startTime = useRef<number>(null);
   const progress = useRef<number>(0);
   const goalRotation = useRef<Quaternion>(new Quaternion());
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     position.current = vectorSum(
@@ -35,12 +36,12 @@ const Camera = () => {
     startTime.current = performance.now();
     progress.current = 0
     goalRotation.current.setFromEuler(new Euler(...currentRotation));
+    dispatch(setCurrentCursorBasedOffset([0, 0]))
   }, [currentLocation, currentPosition, currentRotation]);
 
-  useFrame(({mouse}) => {
+  useFrame(() => {
     if (progress.current >= 1) {
-      const x = mouse.x 
-      const y = mouse.y
+      const [x, y] = currentCursorBasedOffset
       const cursorBasedRotation = new Quaternion()
       cursorBasedRotation.setFromEuler(new Euler(currentRotation[0] + y * locationsConfig[currentLocation].cameraChasingMaxAngle, currentRotation[1] + x * - locationsConfig[currentLocation].cameraChasingMaxAngle, currentRotation[2]))
       camera.quaternion.slerp(cursorBasedRotation, config.mouseChaseSpeed)

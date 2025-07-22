@@ -9,7 +9,8 @@ const {cameraRotation} = locationsConfig['outside']
 const initialState: ICameraScheme = {
     currentLocation: 'outside',
     currentPosition: [0, 0, 0],
-    currentRotation: cameraRotation
+    currentRotation: cameraRotation,
+    currentCursorBasedOffset: [0, 0]
 } 
 
 const cameraSlice = createSlice({
@@ -25,10 +26,13 @@ const cameraSlice = createSlice({
         },
         setCurrentRotation: (state, action: PayloadAction<[number, number, number]>) => {
             state.currentRotation = action.payload
-        }
+        },
+        setCurrentCursorBasedOffset: (state, action: PayloadAction<[number, number]>) => {
+            state.currentCursorBasedOffset = action.payload
+        },
     },
 })
 
 export const cameraReducer = cameraSlice.reducer
-export const {setCurrenPosition, setCurrentLocation, setCurrentRotation} = cameraSlice.actions
+export const {setCurrenPosition, setCurrentLocation, setCurrentRotation, setCurrentCursorBasedOffset} = cameraSlice.actions
 export  const CameraSelection = (state: IStore) => state.CameraReducer
