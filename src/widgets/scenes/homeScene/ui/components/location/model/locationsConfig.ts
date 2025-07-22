@@ -4,14 +4,14 @@ import type { locationConfig } from "./types";
 export const locationsConfig: Record<LocationType, locationConfig> = {
     outside: {
         rotation: [0, 0 , 0],
-        position: [0, 110, 70],
-        cameraPosition: [0, 0, 0],
+        position: [0, 0, 0],
+        cameraPosition: [0, 70, 40],
         cameraRotation: [-Math.PI/3.3, 0, 0]
     },
     tavern: {
-        rotation: [0, Math.PI / 3 * 2, 0],
-        position: [-40, 0.7, -40],
-        cameraPosition: [6, 3, 3],
+        rotation: [0,- Math.PI / 3 , 0],
+        position: [-30, 0.03, -40],
+        cameraPosition: [1, 2, 1.5],
         cameraRotation: [0, .6, 0]
     }
 } 
