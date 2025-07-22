@@ -3,4 +3,5 @@ export type locationConfig = {
     rotation: [number, number, number]
     cameraPosition: [number, number, number]
     cameraRotation: [number, number, number]
+    cameraChasingMaxAngle: number
 }

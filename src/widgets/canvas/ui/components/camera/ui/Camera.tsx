@@ -37,8 +37,14 @@ const Camera = () => {
     goalRotation.current.setFromEuler(new Euler(...currentRotation));
   }, [currentLocation, currentPosition, currentRotation]);
 
-  useFrame(() => {
-    if (progress.current >= 1) return;
+  useFrame(({mouse}) => {
+    if (progress.current >= 1) {
+      const x = mouse.x 
+      const y = mouse.y
+      const cursorBasedRotation = new Quaternion()
+      cursorBasedRotation.setFromEuler(new Euler(currentRotation[0] + y * locationsConfig[currentLocation].cameraChasingMaxAngle, currentRotation[1] + x * - locationsConfig[currentLocation].cameraChasingMaxAngle, currentRotation[2]))
+      camera.quaternion.slerp(cursorBasedRotation, config.mouseChaseSpeed)
+    } else {
 
     const elapsed = (performance.now() - startTime.current!) / 1000;
 
@@ -52,6 +58,8 @@ const Camera = () => {
     }
 
     camera.quaternion.slerp(goalRotation.current, t * .1);
+
+    }
   });
 
   return (
