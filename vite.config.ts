@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
+import { visualizer } from 'rollup-plugin-visualizer'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), visualizer()],
   resolve: {
     alias: {
       "@hooks": path.resolve(__dirname, "./src/shared/lib/hooks"),
@@ -20,8 +21,8 @@ export default defineConfig({
           motion: ['motion'],
           axios: ['axios'],
           redux: ['react-redux', '@reduxjs/toolkit'],
-          three: ['three'],
-          react_three: ['@react-three/fiber', '@react-three/drei']
+          react_three: ['@react-three/fiber', '@react-three/drei'],
+          three: ['three']
         }
       }
     }
