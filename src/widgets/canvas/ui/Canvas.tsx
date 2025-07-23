@@ -1,4 +1,4 @@
-import type { FC, MouseEvent, TouchEvent, ReactNode } from "react";
+import type { FC, ReactNode, PointerEvent } from "react";
 import { Canvas } from '@react-three/fiber';
 import { Camera, Lights, setCurrentCursorBasedOffset } from "./components";
 import { useAppDispatch } from "@hooks";
@@ -18,17 +18,14 @@ const CustomCanvas: FC<IProps> = ({ children }) => {
     dispatch(setCurrentCursorBasedOffset([normX, normY]));
   };
 
-  const onMouseMove = (e: MouseEvent) =>
+  const pointerMoveHandle = (e: PointerEvent) => {
     handlePointer(e.clientX, e.clientY);
-
-  const onTouchMove = (e: TouchEvent) =>
-    handlePointer(e.touches[0].clientX, e.touches[0].clientY);
+  }
 
   return (
     <Canvas
-      onMouseMove={onMouseMove}
-      onTouchMove={onTouchMove}
-      style={{ background: "#63e3ff", touchAction: "none" }}
+      onPointerMove={pointerMoveHandle}
+      style={{ background: "#63e3ff", touchAction: "none", pointerEvents: "auto" }}
     >
       <Camera />
       <Lights />

@@ -9,7 +9,7 @@ import { cameraMovementConfig } from "../model/cameraMovementConfig";
 import { Euler, QuadraticBezierCurve3, Quaternion, Vector3 } from "three";
 
 const Camera = () => {
-  const { currentPosition, currentLocation, currentRotation, currentCursorBasedOffset } =
+  const { currentPosition, currentLocation, currentRotation, currentCursorBasedOffset, currentActivity } =
     useAppSelector(CameraSelection);
   const location = locationsConfig[currentLocation];
   const position = useRef<[number, number, number]>([0, 0, 0]);
@@ -37,14 +37,22 @@ const Camera = () => {
     progress.current = 0
     goalRotation.current.setFromEuler(new Euler(...currentRotation));
     dispatch(setCurrentCursorBasedOffset([0, 0]))
-  }, [currentLocation, currentPosition, currentRotation]);
+  }, [currentLocation]);
+
 
   useFrame(() => {
     if (progress.current >= 1) {
       const [x, y] = currentCursorBasedOffset
       const cursorBasedRotation = new Quaternion()
-      cursorBasedRotation.setFromEuler(new Euler(currentRotation[0] + y * locationsConfig[currentLocation].cameraChasingMaxAngle, currentRotation[1] + x * - locationsConfig[currentLocation].cameraChasingMaxAngle, currentRotation[2]))
+      let maxAngle = locationsConfig[currentLocation].cameraChasingMaxAngle
+      let activityBasedRotation = [0, 0, 0]
+      if (currentActivity) {
+        maxAngle = locationsConfig[currentLocation].activities!.find((act) => act.name === currentActivity)!.cameraChasingMaxAngle
+        activityBasedRotation = locationsConfig[currentLocation].activities!.find((act) => act.name === currentActivity)!.cameraRotation
+      }
+      cursorBasedRotation.setFromEuler(new Euler(currentRotation[0] + activityBasedRotation[0] + y * maxAngle, currentRotation[1] + activityBasedRotation[1] + x * - maxAngle, currentRotation[2] + activityBasedRotation[2], 'YXZ'))
       camera.quaternion.slerp(cursorBasedRotation, config.mouseChaseSpeed)
+      camera.position.lerp(new Vector3(...vectorSum(vectorSum(currentPosition, location.position), location.cameraPosition)), .05)
     } else {
 
     const elapsed = (performance.now() - startTime.current!) / 1000;
@@ -65,7 +73,7 @@ const Camera = () => {
 
   return (
     <>
-      <PerspectiveCamera makeDefault />
+      <PerspectiveCamera makeDefault position={position.current} />
     </>
   );
 };
