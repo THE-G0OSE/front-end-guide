@@ -2,10 +2,12 @@ import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit'
 import { type IStore } from './types'
 import { themeReducer } from '@/features/theme'
 import { cameraReducer } from '@/widgets/canvas/ui/components'
+import { authReducer } from '@/features/auth'
 
 const rootReducer: ReducersMapObject<IStore> = {
     ThemeReducer: themeReducer,
-    CameraReducer: cameraReducer
+    CameraReducer: cameraReducer,
+    AuthReducer: authReducer,
 }
 
 export const makeStore = () => {
