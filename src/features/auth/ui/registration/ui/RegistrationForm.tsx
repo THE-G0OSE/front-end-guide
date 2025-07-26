@@ -6,7 +6,7 @@ const RegistrationForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { isLoading },
+    formState: { isLoading, errors },
   } = useForm<IRegistrationForm>();
   const [
     registration,
@@ -25,6 +25,13 @@ const RegistrationForm = () => {
     }
 
   };
+
+  const onClick = () => {
+    setTimeout(() => {
+    if (errors.password) alert(errors.password.message)
+    if (errors.username) alert(errors.username.message)
+    }, 0)
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -60,7 +67,7 @@ const RegistrationForm = () => {
           className="w-[70%] outline-none ml-5 inline border-1 px-2 py-1 border-black"
         />
       </label>
-      <button className="flex">{isLoading ? "..." : "отправить"}</button>
+      <button onClick={onClick} className="flex">{isLoading ? "..." : "отправить"}</button>
     </form>
   );
 };

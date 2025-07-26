@@ -5,7 +5,7 @@ import { useAppDispatch } from '@hooks'
 
 const LoginForm = () => {
 
-  const {register, handleSubmit, formState: {isLoading}} = useForm<ILoginForm>()
+  const {register, handleSubmit, formState: {isLoading, errors}} = useForm<ILoginForm>()
   const [login] = useLoginMutation()
   const dispatch = useAppDispatch()
 
@@ -20,6 +20,13 @@ const LoginForm = () => {
     } catch (err) {
       console.log(err)
     }
+  }
+
+  const onClick = () => {
+    setTimeout(() => {
+    if (errors.password) alert(errors.password.message)
+    if (errors.username) alert(errors.username.message)
+    }, 0)
   }
 
   return (
@@ -49,7 +56,7 @@ const LoginForm = () => {
               className="w-[70%] outline-none ml-5 inline border-1 px-2 py-1 border-black"
             />
           </label>
-          <button className='flex' type="submit">{isLoading ? '...' : 'отправить'}</button>
+          <button className='flex' onClick={onClick} type="submit">{isLoading ? '...' : 'отправить'}</button>
     </form>
   )
 }
