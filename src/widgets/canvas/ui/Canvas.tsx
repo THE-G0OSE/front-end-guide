@@ -1,7 +1,8 @@
 import type { FC, ReactNode, PointerEvent } from "react";
 import { Canvas } from '@react-three/fiber';
-import { Camera, Lights, setCurrentCursorBasedOffset } from "./components";
+import { Lights } from "./components";
 import { useAppDispatch } from "@hooks";
+import { setCurrentCursorBasedOffset, Camera } from "@/widgets/camera";
 
 interface IProps {
   children: ReactNode;

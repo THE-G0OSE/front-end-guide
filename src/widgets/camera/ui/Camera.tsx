@@ -1,11 +1,11 @@
 import { useAppDispatch, useAppSelector } from "@hooks";
 import { PerspectiveCamera } from "@react-three/drei";
 import { CameraSelection, setCurrentCursorBasedOffset } from "../model";
-import { locationsConfig } from "@/widgets/scenes";
+import { locationsConfig } from "@/shared/config";
 import { vectorSum } from "@utils";
 import { useEffect, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { cameraMovementConfig } from "../model/cameraMovementConfig";
+import { cameraMovementConfig } from "@/shared/config";
 import { Euler, QuadraticBezierCurve3, Quaternion, Vector3 } from "three";
 
 const Camera = () => {

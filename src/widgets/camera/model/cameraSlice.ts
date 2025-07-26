@@ -2,7 +2,7 @@ import { type LocationType } from "@hooks";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { changeActivityPayload, ICameraScheme } from "./types";
 import type { IStore } from "@/app/providers/store";
-import { locationsConfig } from "@/widgets/scenes";
+import { locationsConfig } from "@/shared/config";
 
 const { cameraRotation } = locationsConfig["outside"];
 

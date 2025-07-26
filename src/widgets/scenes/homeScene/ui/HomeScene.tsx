@@ -1,4 +1,4 @@
-import { Location } from "./components";
+import { Location } from "@/widgets/location";
 
 const HomeScene = () => {
   return (
