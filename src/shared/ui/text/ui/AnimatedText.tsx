@@ -8,7 +8,7 @@ interface IProps {
 
 const AnimatedText: FC<IProps> = ({ text }) => {
   return (
-    <motion.div variants={textContainerVar} initial='hide' animate='show'>
+    <motion.div key={text.slice(0, 10) + '-message'} variants={textContainerVar} initial='hide' animate='show'>
       {text.split("").map((letter, i) => (
         <motion.p className='inline-block min-w-2 origin-bottom-left' key={`letter-${letter}-${i}`} variants={animatedLetterVar}>{letter}</motion.p>
       ))}
