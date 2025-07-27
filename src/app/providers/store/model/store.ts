@@ -4,10 +4,12 @@ import { themeReducer } from '@/features/theme'
 import { cameraReducer } from '@/widgets/camera'
 import { authReducer } from '@/features/auth'
 import { authApiMiddleware, authApiReducer } from '@/features/auth'
+import { monologReducer } from '@/features/monolog/model'
 
 const rootReducer: ReducersMapObject<IStore> = {
     ThemeReducer: themeReducer,
     CameraReducer: cameraReducer,
+    MonologReducer: monologReducer,
     AuthReducer: authReducer,
     AuthApi: authApiReducer,
 }

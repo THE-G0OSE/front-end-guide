@@ -56,7 +56,7 @@ const AuthPaper: FC<IProps> = ({ type }) => {
       <boxGeometry />
       <meshBasicMaterial color={"#fde487"} />
       <Html
-        position={[-0.15, 0.55, 0]}
+        position={[0, 0.55, 0]}
         scale={[0.1, 0.1, 0.1]}
         rotation={[-Math.PI / 2, 0, Math.PI / 2]}
         transform

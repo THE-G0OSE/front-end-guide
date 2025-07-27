@@ -11,5 +11,7 @@
 }
 
 @theme {
-    --font-main: Kalam
+    --font-main: Kalam;
+    
+    --color-font-monolog: #e3daa8;
 }
