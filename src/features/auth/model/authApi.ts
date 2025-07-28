@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery, fetchQuery } from "@/shared/config/api";
-import { type MeResponse, type AuthResponse, type LoginRequest, type RegisterRequest } from "./types";
+import { type MeResponse, type LoginResponse, type LoginRequest, type RegisterRequest } from "./types";
 
 export const AuthApi = createApi({
     reducerPath: "AuthApi",
@@ -13,7 +13,7 @@ export const AuthApi = createApi({
                 body,
             }),
         }),
-        login: builder.mutation<AuthResponse, LoginRequest>({
+        login: builder.mutation<LoginResponse, LoginRequest>({
             query: (body) => ({
                 url: fetchQuery.LOGIN,
                 method: "POST",
