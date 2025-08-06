@@ -47,8 +47,8 @@ const Camera = () => {
       let maxAngle = locationsConfig[currentLocation].cameraChasingMaxAngle
       let activityBasedRotation = [0, 0, 0]
       if (currentActivity) {
-        maxAngle = locationsConfig[currentLocation].activities!.find((act) => act.name === currentActivity)!.cameraChasingMaxAngle
-        activityBasedRotation = locationsConfig[currentLocation].activities!.find((act) => act.name === currentActivity)!.cameraRotation
+        maxAngle = locationsConfig[currentLocation].activities[currentActivity].cameraChasingMaxAngle
+        activityBasedRotation = locationsConfig[currentLocation].activities[currentActivity].cameraRotation
       }
       cursorBasedRotation.setFromEuler(new Euler(currentRotation[0] + activityBasedRotation[0] + y * maxAngle, currentRotation[1] + activityBasedRotation[1] + x * - maxAngle, currentRotation[2] + activityBasedRotation[2], 'YXZ'))
       camera.quaternion.slerp(cursorBasedRotation, config.mouseChaseSpeed)

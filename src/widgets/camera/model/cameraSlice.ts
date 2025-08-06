@@ -43,20 +43,18 @@ const cameraSlice = createSlice({
     },
     setCurrentActivity: (
       state,
-      action: PayloadAction<changeActivityPayload | null>
+      action: PayloadAction<changeActivityPayload>
     ) => {
-      if (action.payload) {
-        state.currentActivity = action.payload.activity;
-        state.currentPosition = locationsConfig[
-          action.payload.location
-        ].activities!.find(
-          (act) => act.name === action.payload!.activity
-        )!.cameraPosition;
+      state.currentActivity = action.payload.activity;
+      state.currentCursorBasedOffset = [0, 0];
+      if (action.payload.activity) {
+        state.currentPosition =
+          locationsConfig[action.payload.location].activities[
+            action.payload.activity
+          ].cameraPosition;
       } else {
-        state.currentActivity = null;
         state.currentPosition = [0, 0, 0];
       }
-      state.currentCursorBasedOffset = [0, 0];
     },
   },
 });

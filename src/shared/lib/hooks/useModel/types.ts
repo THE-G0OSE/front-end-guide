@@ -1,1 +1,1 @@
-export type LocationType = 'tavern' | 'outside'
+export type LocationType = 'tavern' | 'academy' | 'outside'

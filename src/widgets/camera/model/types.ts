@@ -10,5 +10,5 @@ export interface ICameraScheme {
 
 export type changeActivityPayload = {
     location: LocationType,
-    activity: string
+    activity: string | null
 }
