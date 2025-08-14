@@ -9,7 +9,6 @@ import {
   setCurrentLocation,
 } from "@/widgets/camera";
 import { useAppDispatch } from "../useAppDispatch";
-import { setCurrentStage } from "@/features/auth";
 
 const models: Record<LocationType, string> = {
   outside: "/нема такого",
@@ -27,8 +26,7 @@ export const useModel = ({ type }: IProps) => {
 
   const dispatch = useAppDispatch();
 
-  const clickHandler = (e: ThreeEvent<MouseEvent>) => {
-    e.stopPropagation();
+  const clickHandler = (e: ThreeEvent<MouseEvent>, callback?: () => void) => {
     if (triggers[e.object.name] !== currentActivity) {
       dispatch(
         setCurrentActivity({
@@ -37,7 +35,8 @@ export const useModel = ({ type }: IProps) => {
         })
       );
     }
-    dispatch(setCurrentStage('none'));
+    if (callback) callback()
+    console.log('alo', e.object.name)
   };
 
   const exitHandler = (e: ThreeEvent<MouseEvent>) => {

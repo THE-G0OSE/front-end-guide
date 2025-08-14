@@ -41,7 +41,7 @@ export const locationsConfig: Record<LocationType, locationConfig> = {
         },
         activities: {
             course: {
-                cameraPosition: [3, 0, -10],
+                cameraPosition: [3, 0, -9],
                 cameraRotation: [0, 0, 0],
                 cameraChasingMaxAngle: Math.PI / 4
             }

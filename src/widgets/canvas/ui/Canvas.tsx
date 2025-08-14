@@ -27,6 +27,7 @@ const CustomCanvas: FC<IProps> = ({ children }) => {
     <Canvas
       onPointerMove={pointerMoveHandle}
       style={{ background: "#63e3ff", touchAction: "none", pointerEvents: "auto" }}
+      dpr={window.devicePixelRatio}
     >
       <Camera />
       <Lights />

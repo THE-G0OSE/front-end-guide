@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@plugin "tailwind-scrollbar" {
+    nocompatible: true;
+    preferredStrategy: pseudoelements;
+}
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -14,4 +18,6 @@
     --font-main: Kalam;
     
     --color-font-monolog: #e3daa8;
+    --color-font-desk: #cccccc;
+    --color-desk: #0d2e0f;
 }

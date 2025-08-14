@@ -1,5 +1,6 @@
 import { useModel } from '@hooks'
 import { useMemo } from 'react'
+import { CourseConstructor } from '../../../../../coure-constructor'
 
 const Academy = () => {
   const {scene, exitHandler, clickHandler} = useModel({type: 'academy'})
@@ -16,7 +17,9 @@ const Academy = () => {
         {objects.building &&  <primitive onClick={clickHandler} object={objects.building}/> }
         {objects.roof &&  <primitive object={objects.roof}/> }
         {objects.cover &&  <primitive onClick={exitHandler} object={objects.cover}/> }
-        {objects.desk &&  <primitive onClick={clickHandler} object={objects.desk}/> }
+        {objects.desk &&  <primitive object={objects.desk}>
+          <CourseConstructor />    
+        </primitive> }
     </>
   )
 }
