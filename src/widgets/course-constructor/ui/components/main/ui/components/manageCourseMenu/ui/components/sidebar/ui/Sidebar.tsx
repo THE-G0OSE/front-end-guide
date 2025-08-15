@@ -1,4 +1,5 @@
-import { eiditingCourseSelection, setEditingCourse, useDeleteCourseMutation } from "@/widgets/coure-constructor/model"
+import { Button } from "@/shared/ui"
+import { eiditingCourseSelection, setEditingCourse, useDeleteCourseMutation } from "@/entities/course"
 import { useAppDispatch, useAppSelector } from "@hooks"
 import { FaTrash } from "react-icons/fa"
 
@@ -17,9 +18,9 @@ const Sidebar = () => {
 
   return (
 
-    <div className='h-full p-2 border-1 border-font-desk w-70 absolute right-0 top-0'>
+    <div className='h-full p-2 border-1 border-font-desk w-70 overflow-hidden absolute right-0 top-0'>
         <p className='font-bold w-full text-center text-2xl'>{editingCourse!.name}</p>
-        <button onClick={deleteHandler} className='absolute right-2 bottom-2 text-red-400'><FaTrash/></button>
+        <Button TEXT="RED" BORDER="BORDERLESS" ANIMATION="SLIDE_RIGHT" onClick={deleteHandler} className='absolute right-2 bottom-2'><FaTrash/></Button>
     </div>
 
   )

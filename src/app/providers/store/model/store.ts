@@ -9,7 +9,7 @@ import {
   courseApiMiddleware,
   courseApiReducer,
   editingCourseReducer,
-} from "@/widgets/coure-constructor";
+} from "@/entities/course";
 
 const rootReducer: ReducersMapObject<IStore> = {
   ThemeReducer: themeReducer,

@@ -1,6 +1,6 @@
 import { useModel } from '@hooks'
 import { useMemo } from 'react'
-import { CourseConstructor } from '../../../../../coure-constructor'
+import { CourseConstructor } from '../../../../../course-constructor'
 
 const Academy = () => {
   const {scene, exitHandler, clickHandler} = useModel({type: 'academy'})

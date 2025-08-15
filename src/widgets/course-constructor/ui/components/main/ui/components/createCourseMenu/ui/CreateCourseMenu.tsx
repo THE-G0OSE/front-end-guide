@@ -1,4 +1,5 @@
-import { useCreateCourseMutation } from "@/widgets/coure-constructor/model";
+import { Button } from "@/shared/ui";
+import { useCreateCourseMutation } from "@/entities/course/model";
 import { useRef } from "react";
 import { FaPlus } from "react-icons/fa";
 
@@ -15,7 +16,7 @@ const CreateCourseMenu = () => {
     <div className="w-full h-full flex justify-center items-center">
       <div className='flex gap-4'>
         <input ref={inputRef} className="px-2 py-1 rounded-xl border-font-desk border-1" />
-        <button onClick={clickHandler}><FaPlus/></button>
+        <Button BORDER="BORDERLESS" onClick={clickHandler}><FaPlus/></Button>
       </div>
     </div>
   );

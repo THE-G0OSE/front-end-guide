@@ -1,4 +1,4 @@
-import { eiditingCourseSelection } from "@/widgets/coure-constructor/model";
+import { eiditingCourseSelection } from "@/entities/course";
 import { useAppSelector } from "@hooks";
 import CreateCourseMenu from "./components/createCourseMenu/ui/CreateCourseMenu";
 import ManageCourseMenu from "./components/manageCourseMenu/ui/ManageCourseMenu";

@@ -1,9 +1,10 @@
 import { CourseTab } from "@/entities/course";
+import { Button } from "@/shared/ui";
 import {
   eiditingCourseSelection,
   setIsCreating,
   useGetMyCourseQuery,
-} from "@/widgets/coure-constructor/model";
+} from "@/entities/course";
 import { useAppDispatch, useAppSelector } from "@hooks";
 import { useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
@@ -29,13 +30,13 @@ const Sidebar = () => {
         !error &&
         availableCourses.length > 0 &&
         availableCourses!.map((course) => <CourseTab course={course} />)}
-      <button
+      <Button
         onClick={createButtonClickHandler}
-        className="w-[calc(100%-8px)] mt-5 h-13 flex ml-1 justify-center gap-2 items-center border-1 border-font-desk rounded-2xl"
+        className="w-[calc(100%-8px)]  bottom-2 h-13 ml-1"
       >
         <p className="text-2xl mb-2">создать</p>
         <FaPlus size={30} />
-      </button>
+      </Button>
     </div>
   );
 };

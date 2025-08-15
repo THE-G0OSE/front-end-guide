@@ -21,3 +21,8 @@
     --color-font-desk: #cccccc;
     --color-desk: #0d2e0f;
 }
+
+body, #root {
+    height: 100vh;
+    height: 100dvh;
+}

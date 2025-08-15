@@ -6,8 +6,9 @@ import {
   setEditingCourse,
   useDeleteCourseMutation,
   type Course,
-} from "@/widgets/coure-constructor";
+} from "../model";
 import { useAppDispatch } from "@hooks";
+import { Button } from "@/shared/ui";
 
 interface IProps {
   course: Course;
@@ -39,12 +40,12 @@ const CourseTab: FC<IProps> = ({ course }) => {
         variants={btnContainerVar}
         className="absolute h-13 flex justify-around items-center aspect-square"
       >
-        <button onClick={deleteHandler}>
+        <Button BORDER="BORDERLESS" ANIMATION="NO" onClick={deleteHandler}>
           <FaTrashAlt />
-        </button>
-        <button>
+        </Button>
+        <Button BORDER="BORDERLESS" ANIMATION="NO">
           <FaEdit />
-        </button>
+        </Button>
       </motion.div>
       <motion.div
         onClick={clickHandler}

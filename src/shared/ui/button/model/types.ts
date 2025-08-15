@@ -1,0 +1,5 @@
+export type ButtonTypes = "NORMAL" | "BIG"
+export type ButtonColors =  "TRANSPARENT" | "DESK"
+export type ButtonTexts = "DESK" | "RED"
+export type ButtonBorder = "BORDER" | "BORDERLESS"
+export type ButtonAnimations = "FADE_IN" | "SLIDE_RIGHT" | "SLIDE_LEFT" | "NO"

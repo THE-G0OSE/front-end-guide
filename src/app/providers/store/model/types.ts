@@ -3,7 +3,7 @@ import type { IThemeScheme } from "@/features/theme";
 import type { ICameraScheme } from "@/widgets/camera";
 import type { authApiReducer } from "@/features/auth";
 import type { IMonologScheme } from "@/features/monolog/model";
-import type { courseApiReducer, IEditingCourseScheme } from "@/widgets/coure-constructor";
+import type { courseApiReducer, IEditingCourseScheme } from "@/entities/course";
 
 export interface IStore {
     ThemeReducer: IThemeScheme
