@@ -8,4 +8,5 @@ export type phrases =
   | "loginComplete"
   | "loginFailed"
   | "jwtExp"
-  | "jwtCorrect";
+  | "jwtCorrect"
+  | "passMissing";

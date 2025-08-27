@@ -1,6 +1,6 @@
 import { baseQuery, fetchQuery } from "@/shared/config";
 import { createApi } from "@reduxjs/toolkit/query/react";
-import type { Course, CourseCreateRequest, CourseDeleteRequest, GetCoursesResponse } from "./types";
+import { type CourseRenameReauest, type Course, type CourseCreateRequest, type CourseDeleteRequest, type GetCoursesResponse } from "./types";
 import { setAvailableCourses } from "./editingCourseSlice";
 
 export const CourseApi = createApi({
@@ -38,6 +38,14 @@ export const CourseApi = createApi({
       }),
       invalidatesTags: ["MY_COURSES"]
     }),
+    renameCourse: builder.mutation<void, CourseRenameReauest>({
+      query: (body) => ({
+        url: fetchQuery.PATCH_COURSE + body.ID,
+        method: "PATCH",
+        body: body.body
+      }),
+      invalidatesTags: ["MY_COURSES"]
+    })
   }),
 });
 
@@ -47,6 +55,8 @@ export const {
   useCreateCourseMutation,
   useDeleteCourseMutation,
 } = CourseApi;
+export const courseApiUtil = CourseApi.util
 
 export const courseApiReducer = CourseApi.reducer;
 export const courseApiMiddleware = CourseApi.middleware;
+

@@ -1,7 +1,7 @@
 import type { RootState } from '@/app/providers/store'
 import {fetchBaseQuery} from '@reduxjs/toolkit/query'
 
-type fetchEndpoint = "LOGIN" | "REGISTRATION" | "ME" | "GET_ONE_COURSE" | "GET_MY_COURSES" | "CREATE_COURSE" | "DELETE_COURSE"
+type fetchEndpoint = "LOGIN" | "REGISTRATION" | "ME" | "GET_ONE_COURSE" | "GET_MY_COURSES" | "CREATE_COURSE" | "DELETE_COURSE" | "PATCH_COURSE"
 
 export const fetchQuery: Record<fetchEndpoint, string> = {
     "REGISTRATION": "register",
@@ -10,7 +10,8 @@ export const fetchQuery: Record<fetchEndpoint, string> = {
     "GET_ONE_COURSE": "api/courses/getone/",
     "GET_MY_COURSES": "api/courses/getmy",
     "CREATE_COURSE": "api/courses/create",
-    "DELETE_COURSE": "api/courses/delete/"
+    "DELETE_COURSE": "api/courses/delete/",
+    "PATCH_COURSE": "api/courses/patch/"
 }
 
 export const baseQuery = fetchBaseQuery({

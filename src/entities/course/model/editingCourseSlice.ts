@@ -1,6 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Course, IEditingCourseScheme } from "./types";
 import type { RootState } from "@/app/providers/store";
+import { logOut, setToken } from "@/features/auth";
 
 const initialState: IEditingCourseScheme = {
     availableCourses: [],
@@ -33,6 +34,9 @@ export const editingCourseSlice = createSlice({
             state.editingCourse = null
         }
     },
+    extraReducers: (builder) => {
+        builder.addCase(logOut, (state) => {state.availableCourses = []}).addCase(setToken, (state) => {state.availableCourses = []})
+    }
 })
 
 export const editingCourseReducer = editingCourseSlice.reducer

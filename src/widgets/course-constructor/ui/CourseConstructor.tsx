@@ -24,18 +24,27 @@ const CourseConstructor = () => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsEditing(currentActivity === 'course')
-  }, [currentActivity])
+    setIsEditing(currentActivity === "course");
+  }, [currentActivity]);
 
   return (
-    <Html distanceFactor={1} transform occlude position={[0.012, 1.500, -3.20]}>
+    <Html distanceFactor={1} transform occlude position={[0.000, 1.5, -3.28]}>
       <ContextBridge>
         <div
           onClick={clickHandler}
-          className="border-white border-1 w-242 h-151 pointer-events-auto"
+          className="border-white border-1 w-248 h-154 pointer-events-auto"
         >
           <AnimatePresence mode="wait">
-            {isEditing ? <div className='w-full h-full flex'><Sidebar/><Main/></div> : <Preview key='preview'/>}
+            {isEditing ? (
+              <div className="w-full h-full flex">
+                <AnimatePresence propagate>
+                  <Sidebar key="counstructor-sidebar" />
+                  <Main key="constructor-main" />
+                </AnimatePresence>
+              </div>
+            ) : (
+              <Preview key="constructor-preview" />
+            )}
           </AnimatePresence>
         </div>
       </ContextBridge>

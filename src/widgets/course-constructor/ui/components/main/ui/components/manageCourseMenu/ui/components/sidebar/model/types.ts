@@ -1,0 +1,1 @@
+export type courseManageStage = "edit" | "settings" | "share" | null

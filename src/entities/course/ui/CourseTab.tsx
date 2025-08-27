@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { btnContainerVar, tabVar } from "../model/animations";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import type { FC } from "react";
+import { type FC } from "react";
 import {
   setEditingCourse,
   useDeleteCourseMutation,
@@ -19,7 +19,6 @@ const CourseTab: FC<IProps> = ({ course }) => {
   const dispatch = useAppDispatch();
 
   const deleteHandler = () => {
-    console.log("alo");
     deleteCourse({ ID: course.ID });
   };
 
@@ -30,11 +29,10 @@ const CourseTab: FC<IProps> = ({ course }) => {
 
   return (
     <motion.div
-      key={`course-${course.ID}`}
       initial="hide"
       animate="show"
-      whileHover="hover"
       className="w-full relative flex justify-center items-center h-15 px-2 py-1"
+      whileHover="hover"
     >
       <motion.div
         variants={btnContainerVar}
@@ -43,19 +41,23 @@ const CourseTab: FC<IProps> = ({ course }) => {
         <Button BORDER="BORDERLESS" ANIMATION="NO" onClick={deleteHandler}>
           <FaTrashAlt />
         </Button>
-        <Button BORDER="BORDERLESS" ANIMATION="NO">
+        <Button BORDER="BORDERLESS" ANIMATION="NO" onClick={clickHandler}>
           <FaEdit />
         </Button>
       </motion.div>
+
       <motion.div
-        onClick={clickHandler}
         variants={tabVar}
-        className="w-[calc(100%-8px)] px-2 py-1 text-xl flex justify-center items-center rounded-2xl absolute bg-desk h-13 bg- border-1 border-font-desk"
+        className="w-[calc(100%-8px)] px-2 py-1 text-xl overflow-hidden flex justify-center items-center rounded-2xl absolute bg-desk h-13 border-1 border-font-desk"
       >
-        <p>{course.name}</p>
+        <p
+          onClick={clickHandler}
+          className="text-ellipsis absolute text-nowrap w-[95%] overflow-hidden"
+        >
+          {course.name}
+        </p>
       </motion.div>
     </motion.div>
   );
 };
-
 export default CourseTab;

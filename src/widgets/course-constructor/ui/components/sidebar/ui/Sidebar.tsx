@@ -1,5 +1,5 @@
 import { CourseTab } from "@/entities/course";
-import { Button } from "@/shared/ui";
+import { Button, Loader } from "@/shared/ui";
 import {
   eiditingCourseSelection,
   setIsCreating,
@@ -8,9 +8,10 @@ import {
 import { useAppDispatch, useAppSelector } from "@hooks";
 import { useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
+import NoContent from "./components/noContent/ui/NoContent";
 
 const Sidebar = () => {
-  const { error, isLoading } = useGetMyCourseQuery();
+  const { error, isFetching } = useGetMyCourseQuery();
   const { availableCourses } = useAppSelector(eiditingCourseSelection);
   const dispatch = useAppDispatch();
 
@@ -25,18 +26,23 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="h-full w-50 border-r relative scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-white/0 [&::-webkit-scrollbar-thumb]:border [&::-webkit-scrollbar-thumb]:border-font-desk scrollbar-track-transparent scrollbar-track-rounded border-font-desk overflow-x-hidden" >
-      {!isLoading &&
-        !error &&
-        availableCourses.length > 0 &&
-        availableCourses!.map((course) => <CourseTab course={course} />)}
+    <div className="h-full w-50 flex flex-col Eustify-between border-r relative scrollbar border-font-desk overflow-x-hidden" >
+      <div className='flex flex-col mt-2'>
+      {
+        availableCourses!.map((course) => <CourseTab key={course.ID} course={course} />)
+      }
+      {
+        availableCourses.length === 0 && <NoContent/>
+      }
+      </div>
       <Button
         onClick={createButtonClickHandler}
-        className="w-[calc(100%-8px)]  bottom-2 h-13 ml-1"
+        className="w-[calc(100%-8px)] mb-3 h-13 ml-1"
       >
         <p className="text-2xl mb-2">создать</p>
         <FaPlus size={30} />
       </Button>
+      {isFetching && <div className='absolute top-2 left-2'><Loader/></div>}
     </div>
   );
 };
